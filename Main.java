@@ -1,4 +1,4 @@
-package com.timbuchalka;
+package com.company;
 
 public class Main {
 
