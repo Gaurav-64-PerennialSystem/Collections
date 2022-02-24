@@ -6,6 +6,7 @@ import java.util.*;
  * Created by dev on 2/12/2015.
  */
 public class Theatre {
+    private static Logger logger=myLoggerClass.getLOGGER();
     private final String theatreName;
     private List<Seat> seats = new ArrayList<>();
 
@@ -35,17 +36,17 @@ public class Theatre {
         }
 
         if(requestedSeat == null) {
-            System.out.println("There is no seat " + seatNumber);
+            logger.log(Level.INFO,"There is no seat " + seatNumber);
             return false;
         }
 
         return requestedSeat.reserve();
     }
 
-    // for testing
+    
     public void getSeats() {
         for(Seat seat : seats) {
-            System.out.println(seat.getSeatNumber());
+            logger.log(Level.INFO,"There is no seat " +seat.getSeatNumber());
         }
     }
 
@@ -60,7 +61,8 @@ public class Theatre {
         public boolean reserve() {
             if(!this.reserved) {
                 this.reserved = true;
-                System.out.println("Seat " + seatNumber + " reserved");
+                logger.log(Level.INFO,"Seat " + seatNumber + " reserved");
+                
                 return true;
             } else {
                 return false;
@@ -70,7 +72,8 @@ public class Theatre {
         public boolean cancel() {
             if(this.reserved) {
                 this.reserved = false;
-                System.out.println("Reservation of seat " + seatNumber + " cancelled");
+                logger.log(Level.INFO,"Reservation of seat " + seatNumber + " cancelled");
+    
                 return true;
             } else {
                 return false;
